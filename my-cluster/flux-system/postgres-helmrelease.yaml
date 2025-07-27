@@ -1,20 +1,22 @@
 # Ripped from ChatGPT
 # postgres-helmrelease.yaml
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: postgres
-  namespace: default  # or another namespace
+  namespace: flux-system
 spec:
-  interval: 5m
   chart:
     spec:
       chart: postgresql
-      version: 16.7.21   # pin to a specific version
+      reconcileStrategy: ChartVersion
+      version: 16.7.21
       sourceRef:
         kind: HelmRepository
         name: bitnami
-        namespace: flux-system
+  interval: 5m0s
+  releaseName: postgresql
+  targetNamespace: default
   values:
     auth:
       username: admin
