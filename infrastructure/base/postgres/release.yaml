@@ -5,6 +5,8 @@ metadata:
   namespace: postgres
 spec:
   releaseName: postgres
+  targetNamespace: postgres
+  interval: 1h # Helm CRD drift detection interval
   chart:
     spec:
       chart: postgresql
@@ -14,8 +16,7 @@ spec:
         kind: HelmRepository
         name: postgres
         namespace: postgres
-  interval: 1h # Helm CRD drift detection interval
-global:
-  primary:
-    service:
-      type: LoadBalancer
+  values:
+    primary:
+      service:
+        type: LoadBalancer
