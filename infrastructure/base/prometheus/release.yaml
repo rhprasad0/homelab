@@ -7,6 +7,7 @@ spec:
   releaseName: kube-prometheus-stack
   targetNamespace: prometheus
   interval: 1h # Helm CRD drift detection interval
+  timeout: 15m
   chart:
     spec:
       chart: kube-prometheus-stack
