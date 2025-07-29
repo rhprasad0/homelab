@@ -1,22 +1,22 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: postgresql
-  namespace: postgresql
+  name: prometheus
+  namespace: prometheus
 spec:
-  releaseName: postgresql
-  targetNamespace: postgresql
+  releaseName: kube-prometheus-stack
+  targetNamespace: prometheus
   interval: 1h # Helm CRD drift detection interval
   chart:
     spec:
-      chart: postgresql
-      version: 16.7.21
+      chart: kube-prometheus-stack
+      version: 75.15.1
       interval: 10h # Interval for Helm chart updates
       sourceRef:
         kind: HelmRepository
-        name: postgresql
-        namespace: postgresql
+        name: prometheus
+        namespace: prometheus
   values:
-    primary:
+    prometheusOperator:
       service:
         type: LoadBalancer

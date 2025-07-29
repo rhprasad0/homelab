@@ -1,0 +1,9 @@
+# Prometheus HelmRepository
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: prometheus
+  namespace: prometheus
+spec:
+  url: oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack
+  type: oci
