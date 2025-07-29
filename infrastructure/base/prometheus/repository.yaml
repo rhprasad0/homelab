@@ -5,5 +5,5 @@ metadata:
   name: prometheus
   namespace: prometheus
 spec:
-  url: oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack
+  url: oci://ghcr.io/prometheus-community/charts
   type: oci
