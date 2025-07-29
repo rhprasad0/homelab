@@ -17,7 +17,3 @@ spec:
         kind: HelmRepository
         name: prometheus
         namespace: prometheus
-  values:
-    prometheusOperator:
-      service:
-        type: LoadBalancer
