@@ -1,0 +1,19 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: dask
+  namespace: dask
+spec:
+  releaseName: dask
+  targetNamespace: dask
+  interval: 1h # Helm CRD drift detection interval
+  timeout: 15m
+  chart:
+    spec:
+      chart: dask
+      version: 2024.1.1
+      interval: 10h # Interval for Helm chart updates
+      sourceRef:
+        kind: HelmRepository
+        name: dask
+        namespace: dask
