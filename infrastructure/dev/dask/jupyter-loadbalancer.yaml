@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jupyter-loadbalancer
+  namespace: dask
+spec:
+  type: LoadBalancer
+  ports:
+  - name: http
+    port: 8888
+    targetPort: 8888
+    protocol: TCP
+  selector:
+    app: dask
+    component: jupyter

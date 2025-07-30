@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dask-dashboard-loadbalancer
+  namespace: dask
+spec:
+  type: LoadBalancer
+  ports:
+  - name: http
+    port: 8787
+    targetPort: 8787
+    protocol: TCP
+  selector:
+    app: dask
+    component: scheduler
