@@ -7,7 +7,6 @@ spec:
   releaseName: synology-csi
   targetNamespace: synology
   interval: 1h # Helm CRD drift detection interval
-  timeout: 15m
   chart:
     spec:
       chart: synology-csi
@@ -20,15 +19,8 @@ spec:
   values:
     clientInfoSecret:
       clients:
-        apiVersion: v1
-        kind: Secret
-        metadata:
-          name: synology-csi-client-info
-        stringData:
-          client-info.yaml: |
-            clients:
-            - host: 192.168.68.67
-              https: false
-              password: z*mbts2C
-              port: 5000
-              username: k8s
+        - host: 192.168.68.67
+          https: false
+          password: z*mbts2C
+          port: 5000
+          username: k8s
