@@ -1,0 +1,8 @@
+# Synology HelmRepository
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: synology
+  namespace: synology
+spec:
+  url: https://christian-schlichtherle.github.io/synology-csi-chart
