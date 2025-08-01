@@ -24,3 +24,4 @@ spec:
           password: z*mbts2C
           port: 5000
           username: k8s
+      create: true # Create the Secret if it does not exist
