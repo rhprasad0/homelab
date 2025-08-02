@@ -19,7 +19,7 @@ spec:
   values:
     clientInfoSecret:
       clients:
-        - host: 192.168.168.67
+        - host: 192.168.68.67
           https: false
           password: z*mbts2C
           port: 5000
