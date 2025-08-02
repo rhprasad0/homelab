@@ -1,0 +1,2 @@
+resources:
+- "nfs-pv-pvc.yaml"
