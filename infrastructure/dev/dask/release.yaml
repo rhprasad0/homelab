@@ -145,7 +145,10 @@ spec:
       tolerations: [] # Tolerations.
       affinity: {} # Container affinity.
       nodeSelector: {} # Node Selector.
-      securityContext: {} # Security Context.
+      securityContext: # Security Context.
+        runAsUser: 0
+        runAsGroup: 0
+        fsGroup: 0
       # serviceAccountName: ""
       # port: ""
       portDashboard: 8790 # Worker dashboard and metrics port.
@@ -248,7 +251,10 @@ spec:
       tolerations: [] # Tolerations.
       affinity: {} # Container affinity.
       nodeSelector: {} # Node Selector.
-      securityContext: {} # Security Context.
+      securityContext: # Security Context.
+        runAsUser: 0
+        runAsGroup: 0
+        fsGroup: 0
       serviceAccountName: "dask-jupyter" # Service account for use with RBAC
       ingress:
         enabled: false # Enable ingress.
