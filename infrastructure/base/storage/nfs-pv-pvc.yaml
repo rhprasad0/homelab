@@ -23,15 +23,15 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: nfs-synology-pvc
-  namespace: default
+  name: dask-nfs-pvc
+  namespace: dask
 spec:
   accessModes:
     - ReadWriteMany
   storageClassName: ""
   resources:
     requests:
-      storage: 1000Gi
+      storage: 500Gi
   volumeName: nfs-synology-pv
 
 # Uncomment the following section to create a test pod that uses the NFS PVC  

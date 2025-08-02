@@ -133,13 +133,14 @@ spec:
           cpu: 1
           memory: 3G
           #  nvidia.com/gpu: 1
-      mounts: {} # Worker Pod volumes and volume mounts, mounts.volumes follows kuberentes api v1 Volumes spec. mounts.volumeMounts follows kubernetesapi v1 VolumeMount spec
-      #  volumes:
-      #    - name: data
-      #      emptyDir: {}
-      #  volumeMounts:
-      #    - name: data
-      #      mountPath: /data
+      mounts: # Worker Pod volumes and volume mounts, mounts.volumes follows kuberentes api v1 Volumes spec. mounts.volumeMounts follows kubernetesapi v1 VolumeMount spec
+        volumes:
+          - name: nfs-storage
+            persistentVolumeClaim:
+              claimName: dask-nfs-pvc
+        volumeMounts:
+          - name: nfs-storage
+            mountPath: /data
       annotations: {} # Annotations
       tolerations: [] # Tolerations.
       affinity: {} # Container affinity.
@@ -236,13 +237,14 @@ spec:
       #  requests:
       #    cpu: 2
       #    memory: 6G
-      mounts: {} # Worker Pod volumes and volume mounts, mounts.volumes follows kuberentes api v1 Volumes spec. mounts.volumeMounts follows kubernetesapi v1 VolumeMount spec
-      #  volumes:
-      #    - name: data
-      #      emptyDir: {}
-      #  volumeMounts:
-      #    - name: data
-      #      mountPath: /data
+      mounts: # Worker Pod volumes and volume mounts, mounts.volumes follows kuberentes api v1 Volumes spec. mounts.volumeMounts follows kubernetesapi v1 VolumeMount spec
+        volumes:
+          - name: nfs-storage
+            persistentVolumeClaim:
+              claimName: dask-nfs-pvc
+        volumeMounts:
+          - name: nfs-storage
+            mountPath: /data
       tolerations: [] # Tolerations.
       affinity: {} # Container affinity.
       nodeSelector: {} # Node Selector.
