@@ -1,3 +1,5 @@
+# This is not ideal and requires NFS be set up on the host nodes via SSH
+
 apiVersion: v1
 kind: PersistentVolume
 metadata:
