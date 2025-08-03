@@ -1,0 +1,8 @@
+# Dask HelmRepository
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: postgres
+  namespace: postgres
+spec:
+  url: https://self-hosters-by-night.github.io/helm-charts
