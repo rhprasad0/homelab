@@ -1,4 +1,4 @@
-apiVersion: helm.toolkit.fluxcd.io/v2beta1
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: dask
@@ -116,7 +116,7 @@ spec:
       #  - name: EXTRA_APT_PACKAGES
       #    value: build-essential openssl
        - name: EXTRA_CONDA_PACKAGES
-         value: dvc dask-ml scikit-learn -c conda-forge
+         value: dvc dask-ml sqlalchemy psycopg2-binary -c conda-forge
       #  - name: EXTRA_PIP_PACKAGES
       #    value: s3fs dask-ml prometheus-client --upgrade
       extraArgs:
@@ -219,7 +219,7 @@ spec:
       passwordHint: "dask" # This is only used in the help text, don't forget to update the hash too.
       env: # Environment variables. See `values.yaml` for example values.
         - name: EXTRA_CONDA_PACKAGES
-          value: "dvc dask-ml scikit-learn -c conda-forge"
+          value: "dvc dask-ml sqlalchemy psycopg2-binary -c conda-forge"
       #  - name: EXTRA_PIP_PACKAGES
       #    value: "s3fs dask-ml --upgrade"
       command: null # Container command.
