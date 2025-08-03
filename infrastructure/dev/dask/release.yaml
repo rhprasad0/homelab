@@ -116,7 +116,7 @@ spec:
       #  - name: EXTRA_APT_PACKAGES
       #    value: build-essential openssl
        - name: EXTRA_CONDA_PACKAGES
-         value: dask-sql -c conda-forge
+         value: "dask-sql -c conda-forge"
       #  - name: EXTRA_PIP_PACKAGES
       #    value: s3fs dask-ml prometheus-client --upgrade
       extraArgs:
