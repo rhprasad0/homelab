@@ -1,0 +1,7 @@
+# Docker
+.dockerignore
+Dockerfile
+
+# Add to existing .gitignore
+*.tar
+docker-compose.override.yml
