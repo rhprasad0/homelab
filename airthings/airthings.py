@@ -38,6 +38,58 @@ def fetch_airthings_data(token):
     resp.raise_for_status()
     return resp.json()
 
+def create_table_if_not_exists():
+    """Create the airthings_readings table if it doesn't exist"""
+    try:
+        # Connect to PostgreSQL
+        conn = psycopg2.connect(**DB_CONFIG)
+        cur = conn.cursor()
+        
+        # Create table query
+        create_table_query = """
+        CREATE TABLE IF NOT EXISTS airthings_readings (
+            id SERIAL PRIMARY KEY,
+            time BIGINT NOT NULL,
+            recorded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            battery INTEGER,
+            co2 DECIMAL(8,2),
+            humidity DECIMAL(5,2),
+            pm1 DECIMAL(8,2),
+            pm25 DECIMAL(8,2),
+            pressure DECIMAL(8,2),
+            radon_short_term_avg DECIMAL(8,2),
+            relay_device_type VARCHAR(50),
+            rssi INTEGER,
+            temp DECIMAL(5,2),
+            voc DECIMAL(8,2)
+        );
+        """
+        
+        # Create indexes query
+        create_indexes_query = """
+        CREATE INDEX IF NOT EXISTS idx_airthings_time ON airthings_readings(time);
+        CREATE INDEX IF NOT EXISTS idx_airthings_recorded_at ON airthings_readings(recorded_at);
+        """
+        
+        # Execute table creation
+        cur.execute(create_table_query)
+        cur.execute(create_indexes_query)
+        conn.commit()
+        
+        print("Table and indexes created successfully (if they didn't exist)")
+        
+    except psycopg2.Error as e:
+        print(f"Database error during table creation: {e}")
+        if conn:
+            conn.rollback()
+    except Exception as e:
+        print(f"Error during table creation: {e}")
+    finally:
+        if cur:
+            cur.close()
+        if conn:
+            conn.close()
+
 def insert_reading_to_db(data):
     """Insert Airthings reading into PostgreSQL"""
     try:
@@ -79,6 +131,9 @@ def insert_reading_to_db(data):
 
 def main():
     try:
+        # Ensure table exists
+        create_table_if_not_exists()
+        
         # Get API token and fetch data
         token = get_airthings_token()
         data = fetch_airthings_data(token)
