@@ -7,7 +7,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Airthings API credentials
-client_id, device_id = "823ae28a-bcd8-4688-9249-70e1ce305ac9", "2960103187"
+client_id = os.getenv("AIRTHINGS_CLIENT_ID")
+device_id = os.getenv("AIRTHINGS_DEVICE_ID")
 secret = os.getenv("AIRTHINGS_SECRET")
 
 # PostgreSQL connection parameters
