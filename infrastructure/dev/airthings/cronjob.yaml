@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: airthings-collector
+  namespace: airthings
+spec:
+  schedule: "*/5 * * * *"  # Run every 5 minutes
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: airthings-collector
+            image: rhprasad/airthings-collector:0.1.0
+            imagePullPolicy: Always
+            envFrom:
+            - secretRef:
+                name: airthings-secrets
+            resources:
+              requests:
+                memory: "64Mi"
+                cpu: "100m"
+              limits:
+                memory: "128Mi"
+                cpu: "200m"
+          restartPolicy: OnFailure
+      backoffLimit: 3
