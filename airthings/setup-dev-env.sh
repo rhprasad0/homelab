@@ -1,9 +1,6 @@
 #!/bin/bash
 # setup-dev-env.sh - Script to set up local development environment
 
-echo "Loading environment variables..."
-source ../.env
-
 echo "Creating Python virtual environment..."
 python3 -m venv venv
 
