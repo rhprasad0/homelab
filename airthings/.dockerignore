@@ -1,7 +1,24 @@
-# Docker
+# Environment files (use Kubernetes secrets instead)
+.env
+.env.*
+
+# Docker files
 .dockerignore
 Dockerfile
 
-# Add to existing .gitignore
+# Development files
+venv/
+__pycache__/
+*.pyc
+*.pyo
+setup-dev-env.sh
+
+# Git and documentation
+.git/
+.gitignore
+README.md
+*.md
+
+# Build artifacts
 *.tar
 docker-compose.override.yml

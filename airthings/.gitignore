@@ -1,6 +1,9 @@
 # Environment variables
 .env
 
+# Kubernetes secrets (contains sensitive data)
+k8s-secrets.yaml
+
 # Python cache
 __pycache__/
 *.py[cod]

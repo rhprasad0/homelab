@@ -13,7 +13,7 @@ secret = os.getenv("AIRTHINGS_SECRET")
 
 # PostgreSQL connection parameters
 DB_CONFIG = {
-    'host': os.getenv('POSTGRES_HOST', 'localhost'),
+    'host': os.getenv('POSTGRES_HOST', 'simple-postgres.postgres.svc.cluster.local'),
     'port': os.getenv('POSTGRES_PORT', '5432'),
     'database': os.getenv('POSTGRES_DB', 'postgres'),
     'user': os.getenv('POSTGRES_USER', 'postgres'),
