@@ -11,7 +11,7 @@ spec:
         spec:
           containers:
           - name: airthings-collector
-            image: rhprasad/airthings-collector:0.1.0
+            image: rhprasad/airthings-pg:latest
             imagePullPolicy: Always
             envFrom:
             - secretRef:
