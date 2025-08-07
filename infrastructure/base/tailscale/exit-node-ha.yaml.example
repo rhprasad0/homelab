@@ -1,0 +1,21 @@
+apiVersion: tailscale.com/v1alpha1
+kind: ProxyGroup
+metadata:
+  name: exit-node-group
+  namespace: tailscale
+spec:
+  type: egress
+  replicas: 2
+  tags:
+    - tag:k8s
+    - tag:exit-node
+  
+---
+apiVersion: tailscale.com/v1alpha1
+kind: Connector
+metadata:
+  name: k8s-exit-node-ha
+  namespace: tailscale
+spec:
+  exitNode: true
+  proxyGroup: exit-node-group

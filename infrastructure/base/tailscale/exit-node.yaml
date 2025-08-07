@@ -1,0 +1,25 @@
+apiVersion: tailscale.com/v1alpha1
+kind: Connector
+metadata:
+  name: k8s-exit-node
+  namespace: tailscale
+spec:
+  # Configure this connector as an exit node
+  exitNode: true
+  
+  # Optional: Add tags for ACL management
+  tags:
+    - tag:k8s
+    - tag:exit-node
+  
+  # Optional: Configure specific hostname
+  hostname: "k8s-exit"
+  
+  # Optional: Resource specifications for the exit node pod
+  # resources:
+  #   requests:
+  #     cpu: "100m"
+  #     memory: "128Mi"
+  #   limits:
+  #     cpu: "500m"
+  #     memory: "256Mi"
