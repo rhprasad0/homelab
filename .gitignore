@@ -27,3 +27,11 @@ Thumbs.db
 # Local database files
 *.db
 *.sqlite3
+
+# Kubernetes secrets (protect OAuth secrets and other sensitive data)
+**/oauth-secret.yaml
+**/secrets.yaml
+
+# Allow secrets templates
+**/oauth-secret.yaml.template
+**/secrets.yaml.template
