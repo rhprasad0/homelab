@@ -23,8 +23,8 @@ You'll need the `kubeseal` command-line tool to create sealed secrets:
 
 ```bash
 # On Linux
-wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.24.5/kubeseal-0.24.5-linux-amd64.tar.gz
-tar -xvzf kubeseal-0.24.5-linux-amd64.tar.gz kubeseal
+wget https://github.com/bitnami-labs/sealed-secrets/releases/download/v0.30.0/kubeseal-0.30.0-linux-amd64.tar.gz
+tar -xvzf kubeseal-0.30.0-linux-amd64.tar.gz kubeseal
 sudo install -m 755 kubeseal /usr/local/bin/kubeseal
 
 # Or using Homebrew (macOS/Linux)
