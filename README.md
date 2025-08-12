@@ -15,4 +15,6 @@ The cronjob.yaml file in `dev/airthings` references the [airthings-pg repo](http
 ### Security
 The cluster is sitting behind a double NAT set up which isolates it from the rest of the network. This was a breaking change!
 
+Kubernetes Sealed Secrets is being used to encrypt credentials prior to being committed to this public repo. 
+
 Tailscale is up and running on the cluster with an exit node configured so as to act as a pseudo VPN. Saves money if a VPN service is needed for security reasons while on the go.  
