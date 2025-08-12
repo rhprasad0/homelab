@@ -5,5 +5,4 @@ metadata:
   namespace: airthings
 resources:
   - namespace.yaml
-  - secrets.yaml
   - cronjob.yaml
