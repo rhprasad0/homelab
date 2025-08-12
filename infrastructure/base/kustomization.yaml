@@ -1,4 +1,5 @@
 resources:
 - "./prometheus"
+- "./sealed-secrets"
 - "./storage"
 - "./tailscale"
