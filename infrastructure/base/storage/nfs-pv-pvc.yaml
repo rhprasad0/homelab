@@ -1,4 +1,5 @@
 # This is not ideal and requires NFS be set up on the host nodes via SSH
+# TODO: Replace this with proper NFS drivers for a storage class.
 
 apiVersion: v1
 kind: PersistentVolume
@@ -12,7 +13,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: ""
   nfs:
-    server: 192.168.68.67
+    server: nas.lan
     path: /volume1/homelab
   mountOptions:
     - hard
@@ -21,20 +22,22 @@ spec:
     - wsize=1048576
     - timeo=600
     - retrans=2
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: dask-nfs-pvc
-  namespace: dask
-spec:
-  accessModes:
-    - ReadWriteMany
-  storageClassName: ""
-  resources:
-    requests:
-      storage: 500Gi
-  volumeName: dask-nfs-pv
+
+# No longer using Dask
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: dask-nfs-pvc
+#   namespace: dask
+# spec:
+#   accessModes:
+#     - ReadWriteMany
+#   storageClassName: ""
+#   resources:
+#     requests:
+#       storage: 500Gi
+#   volumeName: dask-nfs-pv
 
 # Uncomment the following section to create a test pod that uses the NFS PVC  
 # ---
