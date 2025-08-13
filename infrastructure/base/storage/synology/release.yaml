@@ -19,13 +19,9 @@ spec:
   values:
     clientInfoSecret:
       clients:
-        - host: ${SYNOLOGY_HOST}
-          https: ${SYNOLOGY_HTTPS}
-          password: ${SYNOLOGY_PASSWORD}
-          port: ${SYNOLOGY_PORT}
-          username: ${SYNOLOGY_USERNAME}
+        - host: nas.lan
+          https: false
+          password: z*mbts2C
+          port: 5000
+          username: k8s
       create: true # Let the chart create the secret
-  postBuild:
-    substituteFrom:
-      - kind: Secret
-        name: synology-csi-client-info
