@@ -1,5 +1,5 @@
 resources:
 - "../base"
 # - "./dask"
-- "./postgres"
+# - "./postgres"
 - "./airthings"
