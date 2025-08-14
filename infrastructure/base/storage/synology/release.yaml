@@ -18,10 +18,4 @@ spec:
         namespace: synology
   values:
     clientInfoSecret:
-      clients:
-        - host: nas.lan
-          https: false
-          password: z*mbts2C
-          port: 5000
-          username: k8s
-      create: true # Let the chart create the secret
+      name: synology-csi-client-info
