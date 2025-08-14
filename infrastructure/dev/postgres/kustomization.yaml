@@ -2,3 +2,5 @@ resources:
 - "repository.yaml"
 - "namespace.yaml"
 - "release.yaml"
+- "postgres-loadbalancer.yaml"
+- "secrets-sealed.yaml"

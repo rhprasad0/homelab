@@ -5,4 +5,5 @@ metadata:
   name: postgres
   namespace: postgres
 spec:
-  url: https://self-hosters-by-night.github.io/helm-charts
+  url: oci://registry-1.docker.io/bitnamicharts
+  type: oci
