@@ -1,3 +1,2 @@
 resources:
-- "nfs-pv-pvc.yaml"
 - "./synology"
