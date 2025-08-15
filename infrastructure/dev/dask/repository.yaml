@@ -1,8 +1,0 @@
-# Dask HelmRepository
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
-metadata:
-  name: dask
-  namespace: dask
-spec:
-  url: https://helm.dask.org/

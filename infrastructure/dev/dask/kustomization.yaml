@@ -1,6 +1,0 @@
-resources:
-- "repository.yaml"
-- "namespace.yaml"
-- "release.yaml"
-- "jupyter-loadbalancer.yaml"
-- "dask-dashboard-loadbalancer.yaml"
