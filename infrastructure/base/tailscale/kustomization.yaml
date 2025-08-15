@@ -3,3 +3,4 @@ resources:
 - "repository.yaml"
 - "release.yaml"
 - "exit-node.yaml"
+- "sealed-oauth-secret.yaml"
