@@ -23,22 +23,6 @@ spec:
     - timeo=600
     - retrans=2
 
-# No longer using Dask
-# ---
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: dask-nfs-pvc
-#   namespace: dask
-# spec:
-#   accessModes:
-#     - ReadWriteMany
-#   storageClassName: ""
-#   resources:
-#     requests:
-#       storage: 500Gi
-#   volumeName: dask-nfs-pv
-
 # Uncomment the following section to create a test pod that uses the NFS PVC  
 # ---
 # apiVersion: v1

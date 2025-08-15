@@ -17,3 +17,10 @@ spec:
         kind: HelmRepository
         name: prometheus
         namespace: prometheus
+  values:
+    grafana:
+      enabled: true
+      admin:
+        existingSecret: grafana-credentials
+        userKey: admin-user
+        passwordKey: admin-password

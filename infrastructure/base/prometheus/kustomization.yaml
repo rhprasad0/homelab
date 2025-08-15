@@ -3,3 +3,4 @@ resources:
 - "namespace.yaml"
 - "release.yaml"
 - "grafana-loadbalancer.yaml"
+- "sealed-secrets.yaml"
