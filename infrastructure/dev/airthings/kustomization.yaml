@@ -6,4 +6,4 @@ metadata:
 resources:
   - namespace.yaml
   - cronjob.yaml
-  - secrets-sealed.yaml
+  - sealed-secrets.yaml
