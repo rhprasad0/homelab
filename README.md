@@ -17,4 +17,6 @@ The cluster is sitting behind a double NAT set up which isolates it from the res
 
 Kubernetes Sealed Secrets is being used to encrypt credentials prior to being committed to this public repo. 
 
+Claude Security Review is being tested on this repo. I wonder what suggestions it will have for us.
+
 Tailscale is up and running on the cluster with an exit node configured so as to act as a pseudo VPN. Saves money if a VPN service is needed for security reasons while on the go.  
