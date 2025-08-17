@@ -4,3 +4,4 @@ resources:
 - "release.yaml"
 - "postgres-loadbalancer.yaml"
 - "secrets-sealed.yaml"
+- "postgres-pvc.yaml"

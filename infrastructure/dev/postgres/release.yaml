@@ -4,6 +4,9 @@ metadata:
   name: postgres
   namespace: postgres
 spec:
+  dependsOn:
+    - name: synology-csi
+      namespace: synology
   releaseName: postgres
   targetNamespace: postgres
   interval: 1h # Helm CRD drift detection interval
@@ -24,8 +27,9 @@ spec:
       secretKeys: # these are not actually the credentials but pointers in the secret
         adminPasswordKey: postgres-password
         userPasswordKey: password
+    primary:
       persistence:
-        storageClass: synology-csi-iscsi-retain
-        size: 20Gi
-      volumePermissions:
         enabled: true
+        existingClaim: postgres-pvc
+    volumePermissions:
+      enabled: true
