@@ -19,4 +19,7 @@ Kubernetes Sealed Secrets is being used to encrypt credentials prior to being co
 
 Claude Security Review is being tested on this repo. I wonder what suggestions it will have for us.
 
-Tailscale is up and running on the cluster with an exit node configured so as to act as a pseudo VPN. Saves money if a VPN service is needed for security reasons while on the go.  
+Tailscale is up and running on the cluster with an exit node configured so as to act as a pseudo VPN. Saves money if a VPN service is needed for security reasons while on the go.
+
+### MLOps demonstration with MLFlow
+Currently, we are working on setting up Jupyter and MLFlow and getting practice tracking training runs and deploying models to Kubernetes from the MLFlow model registry.
