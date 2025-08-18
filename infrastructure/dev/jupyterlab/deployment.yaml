@@ -26,7 +26,7 @@ spec:
           runAsUser: 0
       containers:
       - name: jupyterlab
-        image: quay.io/jupyter/scipy-notebook:latest
+        image: rhprasad/jupyter-scipy-mlflow:latest
         ports:
         - containerPort: 8888
           name: https
