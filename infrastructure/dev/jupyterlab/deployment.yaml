@@ -29,7 +29,7 @@ spec:
         image: quay.io/jupyter/scipy-notebook:latest
         ports:
         - containerPort: 8888
-          name: http
+          name: https
         env:
         - name: JUPYTER_ENABLE_LAB
           value: "yes"
@@ -38,9 +38,25 @@ spec:
             secretKeyRef:
               name: jupyterlab-credentials
               key: token
+        - name: GEN_CERT
+          value: "no"
+        command: ["start-notebook.py"]
+        args:
+        - "--certfile=/etc/ssl/certs/tls.crt"
+        - "--keyfile=/etc/ssl/private/tls.key"
+        - "--ip=0.0.0.0"
+        - "--port=8888"
+        - "--no-browser"
+        - "--allow-root"
         volumeMounts:
         - name: jupyter-data
           mountPath: /home/jovyan/work
+        - name: ssl-certs
+          mountPath: /etc/ssl/certs
+          readOnly: true
+        - name: ssl-private
+          mountPath: /etc/ssl/private
+          readOnly: true
         # - name: shared-data
         #   mountPath: /data
         resources:
@@ -54,6 +70,18 @@ spec:
       - name: jupyter-data
         persistentVolumeClaim:
           claimName: jupyterlab-pvc
+      - name: ssl-certs
+        secret:
+          secretName: jupyterlab-tls-secret
+          items:
+          - key: tls.crt
+            path: tls.crt
+      - name: ssl-private
+        secret:
+          secretName: jupyterlab-tls-secret
+          items:
+          - key: tls.key
+            path: tls.key
       # - name: shared-data
       #   persistentVolumeClaim:
       #     claimName: shared-data-pvc

@@ -10,7 +10,7 @@ spec:
   - port: 8888
     targetPort: 8888
     protocol: TCP
-    name: http
+    name: https
   selector:
     app: jupyterlab
   type: LoadBalancer
