@@ -1,0 +1,116 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: mlflow
+  namespace: mlflow
+spec:
+  dependsOn:
+    - name: postgres
+      namespace: postgres
+  releaseName: mlflow
+  targetNamespace: mlflow
+  interval: 1h # Helm CRD drift detection interval
+  chart:
+    spec:
+      chart: mlflow
+      version: "0.7.19"
+      interval: 10h # Interval for Helm chart updates
+      sourceRef:
+        kind: HelmRepository
+        name: community-charts
+        namespace: mlflow
+  values:
+    # Backend store configuration for PostgreSQL
+    backendStore:
+      postgres: # Sadly, this Helm chart does not seem to work with the existingDatabaseSecret
+        enabled: true
+        host: "postgres-postgresql.postgres.svc.cluster.local"
+        port: 5432
+        database: "mlflow"
+        user: "mlflow"
+        password: "CcanvylkFK5C&5wWZI"
+      databaseMigration: false
+      databaseConnectionCheck: true
+
+    # Artifact storage (using default file system for now)
+    artifactRoot:
+      defaultArtifactRoot: "/mlflow/artifacts"
+      defaultArtifactsDestination: "/mlflow/artifacts"
+
+    # Service configuration
+    service:
+      type: LoadBalancer
+      port: 5000
+      name: http
+      enabled: true
+
+    # Resource limits
+    resources:
+      requests:
+        cpu: 200m
+        memory: 1Gi
+      limits:
+        cpu: 500m
+        memory: 2Gi
+
+    # # Security context
+    # securityContext:
+    #   runAsUser: 1000
+    #   runAsNonRoot: true
+    #   readOnlyRootFilesystem: false  # MLflow needs to write to some directories
+    #   allowPrivilegeEscalation: false
+
+    # podSecurityContext:
+    #   fsGroup: 2000
+    #   runAsUser: 1000
+    #   runAsGroup: 3000
+    #   fsGroupChangePolicy: OnRootMismatch
+
+    # # Health checks
+    # livenessProbe:
+    #   initialDelaySeconds: 30
+    #   periodSeconds: 30
+    #   timeoutSeconds: 5
+    #   failureThreshold: 5
+
+    # readinessProbe:
+    #   initialDelaySeconds: 10
+    #   periodSeconds: 30
+    #   timeoutSeconds: 3
+    #   failureThreshold: 5
+
+    # # Autoscaling
+    # autoscaling:
+    #   enabled: false
+    #   minReplicas: 1
+    #   maxReplicas: 3
+
+    # # Service account
+    # serviceAccount:
+    #   create: true
+    #   automount: true
+
+    # # Extra arguments for MLflow server
+    # extraArgs:
+    #   workers: 2
+
+    # # Telemetry
+    # telemetry:
+    #   enabled: false
+
+    # Authentication configuration
+    # auth:
+    #   enabled: true
+    #   appName: "basic-auth"
+    #   adminUsername: ""  # Will be populated from existing secret
+    #   adminPassword: ""  # Will be populated from existing secret
+    #   existingAdminSecret:
+    #     name: "mlflow-credentials"
+    #     usernameKey: "admin-username"
+    #     passwordKey: "admin-password"
+    #   defaultPermission: READ
+    #   authorizationFunction: "mlflow.server.auth:authenticate_request_basic_auth"
+
+    # # Ingress (disabled for now - can be enabled later)
+    # ingress:
+    #   enabled: false
