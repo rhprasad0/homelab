@@ -1,6 +1,4 @@
 resources:
 - "./namespace.yaml"
 - "./repository.yaml"
-- "./secrets.yaml"
 - "./release.yaml"
-- "./mlflow-loadbalancer.yaml"
