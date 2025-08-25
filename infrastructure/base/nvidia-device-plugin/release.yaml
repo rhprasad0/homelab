@@ -1,0 +1,63 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: nvidia-device-plugin
+  namespace: nvidia-device-plugin
+spec:
+  releaseName: nvidia-device-plugin
+  targetNamespace: nvidia-device-plugin
+  interval: 1h # Helm CRD drift detection interval
+  chart:
+    spec:
+      chart: nvidia-device-plugin
+      version: "0.17.0"
+      interval: 10h # Interval for Helm chart updates
+      sourceRef:
+        kind: HelmRepository
+        name: nvidia-device-plugin
+        namespace: nvidia-device-plugin
+  values:
+    # Enable node feature discovery compatibility
+    nfd:
+      enabled: true
+    
+    # # Configure tolerations for GPU nodes
+    # tolerations:
+    #   - key: nvidia.com/gpu
+    #     operator: Exists
+    #     effect: NoSchedule
+    
+    # # Configure node affinity for GPU nodes
+    # affinity:
+    #   nodeAffinity:
+    #     requiredDuringSchedulingIgnoredDuringExecution:
+    #       nodeSelectorTerms:
+    #       - matchExpressions:
+    #         - key: "feature.node.kubernetes.io/pci-0300_10de.present"
+    #           operator: In
+    #           values:
+    #           - "true"
+    
+    # # Resource configuration
+    # resources:
+    #   limits:
+    #     cpu: 50m
+    #     memory: 50Mi
+    #   requests:
+    #     cpu: 50m
+    #     memory: 50Mi
+    
+    # # Enable GPU sharing (time-slicing) if needed
+    # config:
+    #   map:
+    #     # Default configuration for all GPU types
+    #     default: |-
+    #       version: v1
+    #       flags:
+    #         migStrategy: none
+    #         failOnInitError: true
+    #       sharing:
+    #         timeSlicing:
+    #           resources:
+    #           - name: nvidia.com/gpu
+    #             replicas: 1
