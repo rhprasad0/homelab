@@ -1,0 +1,56 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: ollama
+  namespace: ollama
+spec:
+  releaseName: ollama
+  targetNamespace: ollama
+  interval: 1h # Helm CRD drift detection interval
+  chart:
+    spec:
+      chart: ollama
+      version: 1.27.0
+      interval: 10h # Interval for Helm chart updates
+      sourceRef:
+        kind: HelmRepository
+        name: ollama
+        namespace: ollama
+  values:
+    # Ollama configuration
+    ollama:
+      # Enable GPU support if available
+      gpu:
+        enabled: true
+        type: "nvidia"
+        number: 1
+      # Pull the llama2:13b model on startup
+      models:
+        pull:
+          - llama2:13b
+    
+    # Resource requests and limits for 12B parameter models
+    resources:
+      requests:
+        cpu: 1
+        memory: 8Gi
+      limits:
+        cpu: 4
+        memory: 24Gi
+        nvidia.com/gpu: 1
+    
+    # Service configuration
+    service:
+      type: LoadBalancer
+      port: 11434
+    
+    # Persistence for models - use existing PVC
+    persistentVolume:
+      enabled: true
+      existingClaim: ollama-pvc
+    
+    # Node selector and affinity to run on the GPU node with local storage
+    nodeSelector:
+      nvidia.com/gpu.present: "true"
+    
+
