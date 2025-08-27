@@ -50,34 +50,8 @@ spec:
     
     # Persistence for user data and conversations
     persistence:
-      enabled: false
-      # size: 5Gi
-      # accessModes:
-      #   - ReadWriteOnce
-      # storageClass: "synology-csi-iscsi-retain"
-    
-    # # Environment variables
-    # extraEnvVars:
-    #   - name: WEBUI_AUTH
-    #     value: "true" # Enable authentication
-    #   - name: WEBUI_NAME
-    #     value: "Open WebUI"
-    #   - name: ENABLE_OPENAI_API
-    #     value: "false" # Disable since we're using Ollama
-    
-    # # Security context
-    # podSecurityContext:
-    #   fsGroup: 1000
-    
-    # containerSecurityContext:
-    #   runAsUser: 1000
-    #   runAsGroup: 1000
-    #   runAsNonRoot: true
-    
-    # Node selector (optional - uncomment if you want to run on specific nodes)
-    # nodeSelector:
-    #   kubernetes.io/arch: amd64
-    
-    # Ingress (disabled for now - using LoadBalancer)
+      enabled: true
+      existingClaim: open-webui-pvc
+
     ingress:
       enabled: false
