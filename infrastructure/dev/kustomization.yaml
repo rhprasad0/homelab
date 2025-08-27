@@ -5,3 +5,4 @@ resources:
 - "./jupyterlab"
 - "./mlflow"
 - "./ollama"
+- "./open-webui"
