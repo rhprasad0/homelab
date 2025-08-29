@@ -24,10 +24,10 @@ spec:
         enabled: true
         type: "nvidia"
         number: 1
-      # Pull the llama2:13b model on startup
+      # Pull the gemma3:12b model on startup
       models:
         pull:
-          - llama2:13b
+          - gemma3:12b
     
     # Resource requests and limits for 12B parameter models
     resources:
