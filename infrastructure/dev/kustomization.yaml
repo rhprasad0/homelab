@@ -6,3 +6,4 @@ resources:
 - "./mlflow"
 - "./ollama"
 - "./open-webui"
+- "./mcpo"

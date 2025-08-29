@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcpo
+  namespace: mcpo
+  labels:
+    app: mcpo
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: mcpo
+  template:
+    metadata:
+      labels:
+        app: mcpo
+    spec:
+      containers:
+      - name: mcpo
+        image: ghcr.io/open-webui/mcpo:main
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+          name: http
+        env:
+        - name: API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: mcpo-credentials
+              key: api-key
+        args:
+        - "--api-key"
+        - "$(API_KEY)"
+        - "--"
+        - "uvx"
+        - "mcp-server-time"
+        - "--local-timezone=America/New_York"
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"

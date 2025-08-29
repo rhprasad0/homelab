@@ -1,0 +1,1 @@
+This is a test MCP server that displays the current time.
