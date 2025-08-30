@@ -39,7 +39,7 @@ spec:
 
     # Service configuration
     service:
-      type: LoadBalancer
+      type: ClusterIP
       port: 5000
       name: http
       enabled: true
@@ -52,65 +52,3 @@ spec:
       limits:
         cpu: 500m
         memory: 2Gi
-
-    # # Security context
-    # securityContext:
-    #   runAsUser: 1000
-    #   runAsNonRoot: true
-    #   readOnlyRootFilesystem: false  # MLflow needs to write to some directories
-    #   allowPrivilegeEscalation: false
-
-    # podSecurityContext:
-    #   fsGroup: 2000
-    #   runAsUser: 1000
-    #   runAsGroup: 3000
-    #   fsGroupChangePolicy: OnRootMismatch
-
-    # # Health checks
-    # livenessProbe:
-    #   initialDelaySeconds: 30
-    #   periodSeconds: 30
-    #   timeoutSeconds: 5
-    #   failureThreshold: 5
-
-    # readinessProbe:
-    #   initialDelaySeconds: 10
-    #   periodSeconds: 30
-    #   timeoutSeconds: 3
-    #   failureThreshold: 5
-
-    # # Autoscaling
-    # autoscaling:
-    #   enabled: false
-    #   minReplicas: 1
-    #   maxReplicas: 3
-
-    # # Service account
-    # serviceAccount:
-    #   create: true
-    #   automount: true
-
-    # # Extra arguments for MLflow server
-    # extraArgs:
-    #   workers: 2
-
-    # # Telemetry
-    # telemetry:
-    #   enabled: false
-
-    # Authentication configuration
-    # auth:
-    #   enabled: true
-    #   appName: "basic-auth"
-    #   adminUsername: ""  # Will be populated from existing secret
-    #   adminPassword: ""  # Will be populated from existing secret
-    #   existingAdminSecret:
-    #     name: "mlflow-credentials"
-    #     usernameKey: "admin-username"
-    #     passwordKey: "admin-password"
-    #   defaultPermission: READ
-    #   authorizationFunction: "mlflow.server.auth:authenticate_request_basic_auth"
-
-    # # Ingress (disabled for now - can be enabled later)
-    # ingress:
-    #   enabled: false
