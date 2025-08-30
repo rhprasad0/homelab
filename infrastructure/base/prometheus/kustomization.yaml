@@ -2,5 +2,5 @@ resources:
 - "repository.yaml"
 - "namespace.yaml"
 - "release.yaml"
-- "grafana-loadbalancer.yaml"
+- "grafana-ingress.yaml"
 - "sealed-secrets.yaml"
