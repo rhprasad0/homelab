@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mcpo
+  name: mcpo-time
   namespace: mcpo
   labels:
-    app: mcpo
+    app: mcpo-time
 spec:
   replicas: 1
   strategy:
     type: Recreate
   selector:
     matchLabels:
-      app: mcpo
+      app: mcpo-time
   template:
     metadata:
       labels:
-        app: mcpo
+        app: mcpo-time
     spec:
       containers:
       - name: mcpo
@@ -28,7 +28,7 @@ spec:
         - name: API_KEY
           valueFrom:
             secretKeyRef:
-              name: mcpo-credentials
+              name: mcpo-time-credentials
               key: api-key
         args:
         - "--api-key"

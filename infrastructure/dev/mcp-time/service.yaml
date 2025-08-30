@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mcpo-service
+  name: mcpo-time-service
   namespace: mcpo
   labels:
-    app: mcpo
+    app: mcpo-time
 spec:
   selector:
-    app: mcpo
+    app: mcpo-time
   ports:
   - protocol: TCP
     port: 8000
     targetPort: 8000
     name: http
-  type: LoadBalancer
+  type: ClusterIP
