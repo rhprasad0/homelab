@@ -6,4 +6,4 @@ resources:
 - "./mlflow"
 - "./ollama"
 - "./open-webui"
-- "./mcpo"
+- "./mcp-time"
