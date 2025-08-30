@@ -35,13 +35,13 @@ spec:
         cpu: 1
         memory: 8Gi
       limits:
-        cpu: 4
+        cpu: 12
         memory: 24Gi
         nvidia.com/gpu: 1
     
     # Service configuration
     service:
-      type: LoadBalancer
+      type: ClusterIP
       port: 11434
     
     # Persistence for models - use existing PVC
