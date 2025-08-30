@@ -4,3 +4,4 @@ resources:
 - "service.yaml"
 - "jupyterlab-pvc.yaml"
 - "sealed-secrets.yaml"
+- "ingress.yaml"
