@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: open-webui
-      version: 7.6.0 # Check https://helm.openwebui.com/ for latest version
+      version: 7.7.0 # Check https://helm.openwebui.com/ for latest version
       interval: 10h # Interval for Helm chart updates
       sourceRef:
         kind: HelmRepository
@@ -40,11 +40,11 @@ spec:
         memory: 256Mi
       limits:
         cpu: 1
-        memory: 1Gi
+        memory: 2Gi
     
     # Service configuration - using LoadBalancer to match your Ollama setup
     service:
-      type: LoadBalancer
+      type: ClusterIP
       port: 5050
       containerPort: 8080
     
@@ -53,5 +53,3 @@ spec:
       enabled: true
       existingClaim: open-webui-pvc
 
-    ingress:
-      enabled: false
