@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: apps-placeholder
+  namespace: default
+data:
+  note: "Placeholder until actual apps are added"
