@@ -4,6 +4,9 @@ metadata:
   name: ollama
   namespace: ollama
 spec:
+  dependsOn:
+    - name: nvidia-device-plugin
+      namespace: nvidia-device-plugin
   releaseName: ollama
   targetNamespace: ollama
   interval: 1h # Helm CRD drift detection interval
