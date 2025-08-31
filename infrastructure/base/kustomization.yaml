@@ -1,6 +1,6 @@
 resources:
+- "./sealed-secrets"
 - "./nvidia-device-plugin"
 - "./prometheus"
-- "./sealed-secrets"
 - "./storage"
 - "./tailscale"

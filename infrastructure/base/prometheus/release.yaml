@@ -4,6 +4,9 @@ metadata:
   name: prometheus
   namespace: prometheus
 spec:
+  dependsOn:
+    - name: sealed-secrets
+      namespace: sealed-secrets
   releaseName: kube-prometheus-stack
   targetNamespace: prometheus
   interval: 1h # Helm CRD drift detection interval

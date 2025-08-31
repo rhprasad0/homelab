@@ -4,6 +4,9 @@ metadata:
   name: synology-csi
   namespace: synology
 spec:
+  dependsOn:
+    - name: sealed-secrets
+      namespace: sealed-secrets
   releaseName: synology-csi
   targetNamespace: synology
   interval: 1h # Helm CRD drift detection interval

@@ -4,6 +4,9 @@ metadata:
   name: tailscale-operator
   namespace: tailscale
 spec:
+  dependsOn:
+    - name: sealed-secrets
+      namespace: sealed-secrets
   interval: 15m
   chart:
     spec:
