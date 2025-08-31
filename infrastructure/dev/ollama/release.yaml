@@ -37,6 +37,7 @@ spec:
       requests:
         cpu: 1
         memory: 8Gi
+        nvidia.com/gpu: 1  # Require GPU - pod will fail to schedule if unavailable
       limits:
         cpu: 12
         memory: 24Gi
@@ -55,5 +56,16 @@ spec:
     # Node selector and affinity to run on the GPU node with local storage
     nodeSelector:
       nvidia.com/gpu.present: "true"
+    
+    # Required node affinity - pod will fail if no GPU nodes available
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: nvidia.com/gpu.present
+              operator: In
+              values:
+              - "true"
     
 
