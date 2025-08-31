@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources: []
+# Add your app manifests to the resources list as you create them
+# Example:
+# resources:
+#   - app1/
+#   - app2/
+#   - some-app.yaml
