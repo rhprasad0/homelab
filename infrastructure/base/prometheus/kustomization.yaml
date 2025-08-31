@@ -1,6 +1,6 @@
 resources:
 - "repository.yaml"
 - "namespace.yaml"
+- "sealed-secrets.yaml"
 - "release.yaml"
 - "grafana-ingress.yaml"
-- "sealed-secrets.yaml"

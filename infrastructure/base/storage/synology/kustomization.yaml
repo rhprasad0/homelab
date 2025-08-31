@@ -1,5 +1,5 @@
 resources:
 - "repository.yaml"
 - "namespace.yaml"
-- "release.yaml"
 - "secrets-sealed.yaml"
+- "release.yaml"

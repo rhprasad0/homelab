@@ -1,5 +1,5 @@
-resources:
-- "../base"
+# resources:
+# - "../base"
 # - "./postgres"
 # - "./airthings"
 # - "./jupyterlab"
