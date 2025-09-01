@@ -1,6 +1,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - "./base"
-  # - "./dev"
+  - "./base/sealed-secrets"
+  - "./base/nvidia-device-plugin"
+  # Other components that depend on sealed-secrets are now in dev layer
+  # - "./base/prometheus"
+  # - "./base/storage"
+  # - "./base/tailscale"
 
