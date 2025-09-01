@@ -1,7 +1,0 @@
-resources:
-- "repository.yaml"
-- "namespace.yaml"
-- "sealed-oauth-secret.yaml"
-- "release.yaml"
-- "exit-node.yaml"
-
